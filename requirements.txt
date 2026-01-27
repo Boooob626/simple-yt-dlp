@@ -1,0 +1,4 @@
+# Core dependencies
+textual>=0.80.0
+yt-dlp           # 🔥 无版本限制 - YouTube 频繁变化，用户需要最新版
+colorama; sys_platform == 'win32'  # Windows 颜色支持

@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-yt-dlp"
+version = "1.0.0"
+description = "Privacy-focused YouTube downloader with beautiful TUI"
+readme = "README.md"
+license = {text = "MIT"}
+authors = []
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Utilities",
+]
+keywords = ["youtube", "downloader", "tui", "textual", "privacy"]
+requires-python = ">=3.9"
+dependencies = [
+    "textual>=0.80.0",
+    "yt-dlp",                     # 🔥 无版本限制 - YouTube 频繁变化，用户需要最新版
+    "colorama; platform_system == 'Windows'",  # Windows 颜色支持
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-asyncio", "ruff>=0.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/your-username/simple-yt-dlp"
+Repository = "https://github.com/your-username/simple-yt-dlp"
+Issues = "https://github.com/your-username/simple-yt-dlp/issues"
+
+[project.scripts]
+simple-yt-dlp = "simple_yt_dlp.__main__:main"
+
+# ✅ 使用 src 布局
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+# ✅ 帮助 Ruff 理解 src 布局
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

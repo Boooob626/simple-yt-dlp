@@ -1,0 +1,6 @@
+-r requirements.txt
+
+# Development tools
+pytest>=7.0
+pytest-asyncio
+ruff>=0.1.0
