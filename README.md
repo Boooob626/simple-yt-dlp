@@ -228,7 +228,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📧 Contact
 
-- GitHub Issues: [github.com/yourname/simple-yt-dlp/issues](https://github.com/yourname/simple-yt-dlp/issues)
+- GitHub Issues: [github.com/Boooob626/simple-yt-dlp/issues](https://github.com/Boooob626/simple-yt-dlp/issues)
 
 ---
 
