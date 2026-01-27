@@ -62,16 +62,61 @@ Unlike web-based downloaders that track what you watch, or clunky command-line t
 
 ### Installation
 
+This project uses [uv](https://github.com/astral-sh/uv), a fast Python package and project manager.
+
+#### Install uv (choose one method)
+
+**Recommended - pipx (isolated installation):**
 ```bash
-# Install uv if you haven't already
+pipx install uv
+```
+
+**Standalone installer (macOS/Linux):**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Standalone installer (Windows PowerShell):**
+```bash
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**Alternative methods:**
+```bash
+# Using pip
 pip install uv
 
+# macOS with Homebrew
+brew install uv
+
+# Windows with WinGet
+winget install --id=astral-sh.uv -e
+```
+
+#### Run the application
+
+```bash
 # Clone the repository
 git clone https://github.com/Boooob626/simple-yt-dlp.git
 cd simple-yt-dlp
 
-# Run the app
+# Run the app (uv will automatically install dependencies)
 uv run python -m simple_yt_dlp
+```
+
+**Or use the sync method:**
+```bash
+# Sync the project (install dependencies)
+uv sync
+
+# Activate the virtual environment and run
+# macOS/Linux:
+source .venv/bin/activate
+simple-yt-dlp
+
+# Windows:
+.venv\Scripts\activate
+simple-yt-dlp
 ```
 
 ## 📋 Supported Formats
