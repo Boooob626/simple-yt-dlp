@@ -42,15 +42,12 @@ Unlike web-based downloaders that track what you watch, or clunky command-line t
 ## 📸 Screenshots
 
 ### Main Interface
-<!-- TODO: Add screenshot -->
 ![Main Interface](assets/screenshots/main.png)
 
 ### Download in Progress
-<!-- TODO: Add screenshot -->
 ![Downloading](assets/screenshots/downloading.png)
 
 ### Directory Selection
-<!-- TODO: Add screenshot -->
 ![Directory Selection](assets/screenshots/directory.png)
 
 ## 🚀 Quick Start
