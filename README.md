@@ -69,7 +69,7 @@ Unlike web-based downloaders that track what you watch, or clunky command-line t
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourname/simple-yt-dlp.git
+git clone https://github.com/Boooob626/simple-yt-dlp.git
 cd simple-yt-dlp
 
 # Install in editable mode
@@ -86,7 +86,7 @@ simple-yt-dlp
 pip install uv
 
 # Clone and run
-git clone https://github.com/yourname/simple-yt-dlp.git
+git clone https://github.com/Boooob626/simple-yt-dlp.git
 cd simple-yt-dlp
 uv run simple_yt_dlp.py
 ```
@@ -142,7 +142,7 @@ python simple_yt_dlp.py
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourname/simple-yt-dlp.git
+git clone https://github.com/Boooob626/simple-yt-dlp.git
 cd simple-yt-dlp
 
 # Create virtual environment
