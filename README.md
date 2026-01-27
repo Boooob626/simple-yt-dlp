@@ -62,36 +62,16 @@ Unlike web-based downloaders that track what you watch, or clunky command-line t
 
 ### Installation
 
-#### Using pip (Recommended)
-
-```bash
-# Clone the repository
-git clone https://github.com/Boooob626/simple-yt-dlp.git
-cd simple-yt-dlp
-
-# Install in editable mode
-pip install -e .
-
-# Run the app
-simple-yt-dlp
-```
-
-#### Using uv (Faster)
-
 ```bash
 # Install uv if you haven't already
 pip install uv
 
-# Clone and run
+# Clone the repository
 git clone https://github.com/Boooob626/simple-yt-dlp.git
 cd simple-yt-dlp
-uv run simple_yt_dlp.py
-```
 
-#### Run directly
-
-```bash
-python simple_yt_dlp.py
+# Run the app
+uv run python -m simple_yt_dlp
 ```
 
 ## 📋 Supported Formats
