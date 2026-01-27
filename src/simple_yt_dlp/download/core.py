@@ -47,16 +47,19 @@ class DownloadCore:
         清除 yt-dlp 缓存目录
 
         用于解决 403 Forbidden 等缓存相关问题
+
+        参考: https://github.com/yt-dlp/yt-dlp/wiki/Cache
         """
         import yt_dlp
 
-        cache_dir = yt_dlp.utils.cache_dir
-        if cache_dir and Path(cache_dir).exists():
-            try:
-                shutil.rmtree(cache_dir)
+        try:
+            # 使用 YoutubeDL 的 Cache API 来清除缓存
+            with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
+                ydl.cache.remove()
+                cache_dir = ydl.cache._get_root_dir()
                 logger.info(f"✅ 已清除 yt-dlp 缓存: {cache_dir}")
-            except Exception as e:
-                logger.warning(f"⚠️ 清除缓存失败: {e}")
+        except Exception as e:
+            logger.warning(f"⚠️ 清除缓存失败: {e}")
 
     def _is_403_error(self, error: Exception) -> bool:
         """
