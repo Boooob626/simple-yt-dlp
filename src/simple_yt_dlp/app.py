@@ -36,23 +36,12 @@ class PrivacyYouTubeDownloader(App):
     # 加载 CSS 样式
     CSS = CSS
 
-    # 键盘绑定 - 优化移动端体验
-    # 单键快捷键更适合 Termux 移动键盘，Ctrl 组合键用于桌面端
+    # 键盘绑定
     BINDINGS = [
-        # 移动端友好的单键快捷键 (优先显示)
-        Binding("q", "quit", "Quit", show=True),
-        Binding("d", "clear", "Clear", show=True),
-        Binding("s", "select_directory", "Dir", show=True),
-        Binding("h", "show_help", "Help", show=True),
-        Binding("enter", "start_download", "DL", show=True),
-
-        # 高级功能
+        Binding("ctrl+c", "quit", "Quit", show=True),
+        Binding("ctrl+d", "clear", "Clear Form", show=True),
+        Binding("ctrl+s", "select_directory", "Select Directory", show=True),
         Binding("f1", "show_doctor", "Doctor", show=True),
-
-        # 桌面端备用快捷键 (不显示在底部栏)
-        Binding("ctrl+c", "quit", "Quit", show=False),
-        Binding("ctrl+d", "clear", "Clear", show=False),
-        Binding("ctrl+s", "select_directory", "Select Dir", show=False),
     ]
 
     def __init__(self):
@@ -235,26 +224,6 @@ class PrivacyYouTubeDownloader(App):
             config_path=self.config.config_path,
             download_dir=self.download_dir,
         ))
-
-    def action_show_help(self) -> None:
-        """显示键盘快捷键帮助"""
-        help_text = """🔤 Keyboard Shortcuts:
-
-[Mobile Friendly]
-  Q - Quit app
-  D - Clear form
-  S - Select directory
-  H - Show this help
-  Enter - Start download
-  F1 - System doctor
-
-[Desktop Alt]
-  Ctrl+C - Quit
-  Ctrl+D - Clear
-  Ctrl+S - Select directory
-
-💡 Termux Tip: Use Volume Up + Q/K to show extra keys!"""
-        self.notify(help_text, severity="information", title="Help")
 
     def directory_selected(self, path: Optional[Path]) -> None:
         """目录选择回调"""
