@@ -1,70 +1,82 @@
 """
-Main Styles - CSS styles for the main application UI
+Main Styles - Responsive CSS styles for the main application UI
+Works on all screen sizes using Textual's flexible layout system
 """
 
 CSS = """
 Screen {
     background: $surface;
+    layout: vertical;
 }
 
+/* Header */
 #header {
     text-align: center;
     text-style: bold;
-    padding: 1 0;
+    padding: 1;
     color: $primary;
     margin-bottom: 1;
 }
 
+/* URL Container - full width, auto height */
 #url_container {
-    width: 90%;
-    margin: 1 0;
+    width: 1fr;
+    height: auto;
+    margin: 0 1 1 1;
 }
 
 Input {
-    width: 100%;
+    width: 1fr;
     border: tall $primary;
     padding: 0 1;
+    height: 1;
 }
 
 Input:focus {
     border: tall $accent;
 }
 
+/* Options Container */
 #options_container {
-    width: 90%;
+    width: 1fr;
+    height: auto;
     background: $panel;
     border: round $primary-background;
     padding: 1;
-    margin: 1 0;
+    margin: 0 1 1 1;
+}
+
+/* Option rows - horizontal layout with flexible widths */
+Horizontal.option-row {
+    width: 1fr;
+    height: 3;
+    align: center middle;
 }
 
 .option-label {
     color: $text-muted;
-    width: 20%;
+    min-width: 10;
     text-align: right;
     padding-right: 1;
 }
 
 Select {
-    width: 75%;
+    width: 1fr;
 }
 
-Horizontal.option-row {
-    height: 3;
-    align: center middle;
-    width: 100%;
-}
-
+/* Privacy Section */
 #privacy_section {
     background: $boost;
     border-left: thick $warning;
     padding: 1;
-    margin-top: 1;
+    margin: 0 1 1 1;
+    height: auto;
 }
 
+/* Title and Status - auto height, full width */
 #title {
-    width: 90%;
-    margin: 1 0;
+    width: 1fr;
+    margin: 0 1;
     text-align: center;
     text-style: bold;
     color: $text;
@@ -72,29 +84,32 @@ Horizontal.option-row {
 }
 
 #status {
-    width: 90%;
-    margin: 1 0;
+    width: 1fr;
+    margin: 0 1;
     text-align: center;
     height: auto;
 }
 
+/* Progress Bar - full width */
 ProgressBar {
-    width: 90%;
-    margin: 1 0;
+    width: 1fr;
+    margin: 0 1 1 1;
     height: 1;
     color: $success;
     background: $primary-background;
 }
 
+/* Controls - horizontal button layout */
 #controls {
-    width: 90%;
+    width: 1fr;
     align: center middle;
-    margin-top: 1;
+    margin: 0 1 1 1;
     height: 3;
 }
 
 Button {
     margin: 0 1;
+    min-width: 12;
 }
 
 Button#download_btn {
@@ -113,10 +128,11 @@ Button#cancel_btn {
     display: none;
 }
 
+/* History Container - flexible height */
 #history_container {
-    width: 90%;
-    height: 8;
-    margin-top: 2;
+    width: 1fr;
+    height: 1fr;
+    margin: 0 1 1 1;
     border: round $primary-background;
     padding: 1;
 }
@@ -130,6 +146,7 @@ Button#cancel_btn {
 .history-item {
     padding: 0 1;
     height: 1;
+    width: 1fr;
 }
 
 .history-success {
@@ -139,6 +156,8 @@ Button#cancel_btn {
 .history-error {
     color: $error;
 }
+
+/* Note: Textual's flexible layout (1fr, auto) naturally handles different screen sizes */
 """
 
 __all__ = ["CSS"]
