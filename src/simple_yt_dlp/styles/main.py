@@ -29,7 +29,6 @@ Input {
     width: 1fr;
     border: tall $primary;
     padding: 0 1;
-    height: 1;
 }
 
 Input:focus {
