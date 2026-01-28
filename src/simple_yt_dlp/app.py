@@ -55,14 +55,14 @@ class PrivacyYouTubeDownloader(App):
         self.download_dir = Path.home() / "Downloads" / "PrivateDownloads"
         self.last_format = "mp4_best"
 
+        # FFmpeg 检测 - 必须在配置加载之前完成
+        self.ffmpeg_available = shutil.which("ffmpeg") is not None
+        self.ffmpeg_location = shutil.which("ffmpeg") or "/usr/bin/ffmpeg"
+
         # 配置管理
         self.config = Config()
         self._load_config()
         self.download_dir.mkdir(parents=True, exist_ok=True)
-
-        # FFmpeg 检测
-        self.ffmpeg_available = shutil.which("ffmpeg") is not None
-        self.ffmpeg_location = shutil.which("ffmpeg") or "/usr/bin/ffmpeg"
 
         # Cookie 管理
         cookie_path = self.config.cookie_file
@@ -97,10 +97,20 @@ class PrivacyYouTubeDownloader(App):
                 self.last_format = saved_format
             else:
                 # 旧配置包含 yt-dlp 格式字符串，迁移到默认格式
-                self.logger.info(f"迁移旧格式配置: {saved_format} -> mp4_best")
-                self.last_format = "mp4_best"
+                self.logger.info(f"迁移旧格式配置: {saved_format} -> mp4_720p")
+                self.last_format = "mp4_720p"
                 # 保存新格式到配置
-                self.config.last_format = "mp4_best"
+                self.config.last_format = "mp4_720p"
+
+        # FFmpeg 优雅降级 - 如果保存的格式需要 FFmpeg 但 FFmpeg 不可用，选择不需要 FFmpeg 的格式
+        from .download.formats import requires_ffmpeg
+
+        if not self.ffmpeg_available and requires_ffmpeg(self.last_format):
+            # 选择一个不需要 FFmpeg 的格式
+            self.logger.info(f"FFmpeg 不可用，切换格式: {self.last_format} -> mp4_720p")
+            self.last_format = "mp4_720p"
+            # 保存新格式到配置
+            self.config.last_format = "mp4_720p"
 
     def compose(self) -> ComposeResult:
         """Compose the main UI"""
